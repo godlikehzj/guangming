@@ -10,6 +10,7 @@
     <packaging>war</packaging>
 
     <properties>
+        <jdk.version>1.7</jdk.version>
         <httpclient.version>3.1</httpclient.version>
         <log4j.version>1.2.14</log4j.version>
         <aspectj.version>1.6.12</aspectj.version>
