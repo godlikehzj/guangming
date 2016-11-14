@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.godlikehzj.guangming.service.mapper.OrdersMapper">
+
+
+    <select id="getAllOrders" resultType="com.godlikehzj.guangming.bean.Order">
+        <![CDATA[
+        SELECT m.name as mname, c.name as cname, c.area, c.addr, c.phone, p.series, p.subType, o.num, o.startTime, o.endTime
+         FROM production as p, orders as o, manager as m, customer as c WHERE o.cid = c.id and o.mid = m.id and o.pid = p.id ORDER BY o.startTime;
+        ]]>
+    </select>
+</mapper>

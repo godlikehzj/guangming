@@ -13,7 +13,14 @@
 
     <mvc:annotation-driven />
 
-    <context:component-scan base-package="com.godlikehzj.guangming" />
+    <context:component-scan base-package="com.godlikehzj.guangming.controller">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+    </context:component-scan>
+
+    <context:component-scan base-package="com.godlikehzj.guangming" >
+        <context:exclude-filter type="annotation"
+                                expression="org.springframework.stereotype.Controller" />
+    </context:component-scan>
 
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <property name="defaultEncoding" value="UTF-8" /> <!-- 默认编码 (ISO-8859-1) -->
