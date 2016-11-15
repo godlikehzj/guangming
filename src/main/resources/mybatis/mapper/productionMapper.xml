@@ -18,6 +18,12 @@
     <select id="getProduction" resultMap="production">
         <![CDATA[
         SELECT * FROM production WHERE series = #{series} AND subType = #{subType}
-                ]]>
+        ]]>
+    </select>
+
+    <select id="getSeries" resultType="String">
+        <![CDATA[
+        SELECT DISTINCT(series) FROM production WHERE status = 1;
+        ]]>
     </select>
 </mapper>

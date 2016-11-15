@@ -2,6 +2,7 @@ package com.godlikehzj.guangming.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.godlikehzj.guangming.bean.Customer;
+import com.godlikehzj.guangming.bean.Manager;
 import com.godlikehzj.guangming.bean.Order;
 import com.godlikehzj.guangming.service.OrderService;
 import com.godlikehzj.guangming.service.mapper.OrdersMapper;
@@ -24,6 +25,7 @@ public class OrderController extends BaseController{
     @Autowired
     private OrderService orderService;
 
+
     @RequestMapping(value = "list.do")
     public String getOrderList(ModelMap modelMap) {
         List<Order> lists = orderService.getAllOrders();
@@ -34,6 +36,11 @@ public class OrderController extends BaseController{
 
     @RequestMapping(value = "toEdit.do")
     public String toEdit(ModelMap modelMap){
+        List<Manager> managers = orderService.getAllManager();
+        List<String> series = orderService.getAllSeries();
+        modelMap.addAttribute("managers", managers);
+        modelMap.addAttribute("seriesList", series);
+
         return "edit.jsp";
     }
 

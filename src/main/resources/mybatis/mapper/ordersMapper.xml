@@ -10,11 +10,10 @@
         ]]>
     </select>
     
-    <insert id="addOrder" parameterType="com.godlikehzj.guangming.bean.Order"  useGeneratedKeys="true" keyProperty="id">
+    <insert id="addOrder"  useGeneratedKeys="true" keyProperty="id">
         <![CDATA[
         INSERT INTO orders(cid,mid,pid,num,startTime,endTime) VALUES (
-        SELECT c.id,m.id,p.id FROM customer as c,manager as m,production as p WHERE c.name=#{cname} and m.name = #{mname} and p.series = #{series} and p.subType = #{subType},
-        #{num}, #{startTime}, #{endTime})
+        #{cid}, #{mid}, #{pid}, #{num}, #{startTime}, #{endTime})
         ]]>
     </insert>
 </mapper>

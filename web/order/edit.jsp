@@ -8,7 +8,7 @@
 <%@ include file="../common/taglibs.jsp"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div class="row">
-  <div class="col-md-6 col-xs-12">
+  <div class="col-md-12 col-sm-12 col-xs-12">
     <form class="form-horizontal form-label-left input_mask" target="_parent" id="add_customer" action="${ctx}/order/add.do" method="post">
       <div class="x_panel">
         <div class="x_title">
@@ -36,20 +36,20 @@
           <div class="form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12">姓名 <span class="required">*</span>
             </label>
-            <div class="col-md-9 col-sm-9 col-xs-12">
-              <input type="text" class="form-control" required="required" placeholder="" name="name">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" class="form-control" required="required" placeholder="" name="cname">
             </div>
           </div>
           <div class="form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12">电话 <span class="required">*</span>
             </label>
-            <div class="col-md-9 col-sm-9 col-xs-12">
+            <div class="col-md-6 col-sm-6 col-xs-12">
               <input type="text" class="form-control" required="required" placeholder="" name="phone">
             </div>
           </div>
           <div class="form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12">地区</label>
-            <div class="col-md-9 col-sm-9 col-xs-12">
+            <div class="col-md-6 col-sm-6 col-xs-12">
               <select class="select2_single form-control" tabindex="-1" name="area">
                 <option></option>
                 <option value="AK">Alaska</option>
@@ -61,7 +61,7 @@
           <div class="form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12">地址
             </label>
-            <div class="col-md-9 col-sm-9 col-xs-12">
+            <div class="col-md-6 col-sm-6 col-xs-12">
               <input type="text" class="form-control" placeholder="" name="addr">
             </div>
           </div>
@@ -93,8 +93,11 @@
 
           <div class="form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12">系列</label>
-            <div class="col-md-9 col-sm-9 col-xs-12">
+            <div class="col-md-6 col-sm-6 col-xs-12">
               <select class="form-control" name="series">
+                <c:forEach var="series" items="${seriesList}">
+                  <option value="${series}">${series}</option>
+                </c:forEach>
                 <option>Choose option</option>
                 <option>Option one</option>
                 <option>Option two</option>
@@ -106,8 +109,24 @@
 
           <div class="form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12">口味</label>
-            <div class="col-md-9 col-sm-9 col-xs-12">
+            <div class="col-md-6 col-sm-6 col-xs-12">
               <select class="form-control" name="subType">
+                <option>Choose option</option>
+                <option>Option one</option>
+                <option>Option two</option>
+                <option>Option three</option>
+                <option>Option four</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">配送人</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <select class="form-control" name="mname">
+                <c:forEach var="manager" items="${managers}">
+                  <option value="${manager.name}">${manager.name}</option>
+                  </c:forEach>
                 <option>Choose option</option>
                 <option>Option one</option>
                 <option>Option two</option>
@@ -120,15 +139,7 @@
           <div class="form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12">数量 <span class="required">*</span>
             </label>
-            <div class="col-md-9 col-sm-9 col-xs-12">
-              <input type="text" class="form-control" required="required" placeholder="" name="num">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12">数量 <span class="required">*</span>
-            </label>
-            <div class="col-md-9 col-sm-9 col-xs-12">
+            <div class="col-md-6 col-sm-6 col-xs-12">
               <input type="text" class="form-control" required="required" placeholder="" name="num">
             </div>
           </div>
@@ -140,9 +151,9 @@
                 <div class="control-group">
                   <div class="controls">
                     <div class="col-md-11 xdisplay_inputx form-group has-feedback">
-                      <input type="text" class="form-control has-feedback-left" id="single_cal1" placeholder="First Name" aria-describedby="inputSuccess2Status">
+                      <input type="text" class="form-control has-feedback-left" name="startTime" id="single_cal1" placeholder="First Name" aria-describedby="inputSuccess2Status2">
                       <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
-                      <span id="inputSuccess2Status" class="sr-only">(success)</span>
+                      <span id="inputSuccess2Status1" class="sr-only">(success)</span>
                     </div>
                   </div>
                 </div>
@@ -157,7 +168,7 @@
                 <div class="control-group">
                   <div class="controls">
                     <div class="col-md-11 xdisplay_inputx form-group has-feedback">
-                      <input type="text" class="form-control has-feedback-left" id="single_cal2" placeholder="First Name" aria-describedby="inputSuccess2Status">
+                      <input type="text" class="form-control has-feedback-left" name="endTime" id="single_cal2" placeholder="First Name" aria-describedby="inputSuccess2Status">
                       <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
                       <span id="inputSuccess2Status2" class="sr-only">(success)</span>
                     </div>
@@ -170,7 +181,7 @@
 
           <div class="ln_solid"></div>
           <div class="form-group">
-            <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
               <button type="submit" class="btn btn-primary">Cancel</button>
               <button type="submit" class="btn btn-success" id="c_submit">Submit</button>
             </div>
@@ -191,4 +202,19 @@
     <%--success : dataTest.toBack--%>
   <%--};--%>
   <%--$('#dataTest_edit_form_id').ajaxForm(options);--%>
+  $(document).ready(function() {
+    $('#single_cal1').daterangepicker({
+      singleDatePicker: true,
+      singleClasses: "picker_1"
+    }, function (start, end, label) {
+      console.log(start.toISOString(), end.toISOString(), label);
+    });
+
+    $('#single_cal2').daterangepicker({
+      singleDatePicker: true,
+      singleClasses: "picker_2"
+    }, function (start, end, label) {
+      console.log(start.toISOString(), end.toISOString(), label);
+    });
+  });
 </script>

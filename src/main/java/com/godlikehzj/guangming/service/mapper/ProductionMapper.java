@@ -11,4 +11,5 @@ import java.util.List;
 public interface ProductionMapper {
     public List<Production> getProductions();
     public Production getProduction(@Param("series") String series, @Param("subType") String subType);
+    public List<String> getSeries();
 }
