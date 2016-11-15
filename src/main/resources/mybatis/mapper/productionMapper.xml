@@ -14,4 +14,10 @@
         SELECT * FROM production WHERE status=1;
         ]]>
     </select>
+
+    <select id="getProduction" resultMap="production">
+        <![CDATA[
+        SELECT * FROM production WHERE series = #{series} AND subType = #{subType}
+                ]]>
+    </select>
 </mapper>

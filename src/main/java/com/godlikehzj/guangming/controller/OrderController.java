@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
@@ -19,7 +20,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping(value = "order/")
-public class OrderController {
+public class OrderController extends BaseController{
     @Autowired
     private OrderService orderService;
 
@@ -36,11 +37,10 @@ public class OrderController {
         return "edit.jsp";
     }
 
-    @RequestMapping(value = "add/customer.do")
-    public void edit(HttpServletResponse response, Customer customer){
-
-        JSONObject json = new JSONObject();
-        json.put("success", true);
-//        WEBUtil.write(response, json.toString());
+    @RequestMapping(value = "add.do")
+    public void edit(HttpServletRequest request,
+                     HttpServletResponse response,
+                     Order order){
+        outJSON(request, response, orderService.addOrder(order));
     }
 }

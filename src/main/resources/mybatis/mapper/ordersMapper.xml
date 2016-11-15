@@ -9,4 +9,12 @@
          FROM production as p, orders as o, manager as m, customer as c WHERE o.cid = c.id and o.mid = m.id and o.pid = p.id ORDER BY o.startTime;
         ]]>
     </select>
+    
+    <insert id="addOrder" parameterType="com.godlikehzj.guangming.bean.Order"  useGeneratedKeys="true" keyProperty="id">
+        <![CDATA[
+        INSERT INTO orders(cid,mid,pid,num,startTime,endTime) VALUES (
+        SELECT c.id,m.id,p.id FROM customer as c,manager as m,production as p WHERE c.name=#{cname} and m.name = #{mname} and p.series = #{series} and p.subType = #{subType},
+        #{num}, #{startTime}, #{endTime})
+        ]]>
+    </insert>
 </mapper>
