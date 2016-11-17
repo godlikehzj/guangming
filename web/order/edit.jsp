@@ -94,7 +94,8 @@
           <div class="form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12">系列</label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <select class="form-control" name="series">
+              <select class="form-control" name="series" id = "series" onclick="hideSubType()" onchange="showSubType()">
+                <option value="">请选择</option>
                 <c:forEach var="series" items="${seriesList}">
                   <option value="${series}">${series}</option>
                 </c:forEach>
@@ -111,11 +112,10 @@
             <label class="control-label col-md-3 col-sm-3 col-xs-12">口味</label>
             <div class="col-md-6 col-sm-6 col-xs-12">
               <select class="form-control" name="subType">
-                <option>Choose option</option>
-                <option>Option one</option>
-                <option>Option two</option>
-                <option>Option three</option>
-                <option>Option four</option>
+                <option value="">请选择</option>
+                <c:forEach var="production" items="${productions}">
+                  <option value="${production.subType}" class="${production.series} none" >${production.subType}</option>
+                </c:forEach>
               </select>
             </div>
           </div>
@@ -202,6 +202,16 @@
     <%--success : dataTest.toBack--%>
   <%--};--%>
   <%--$('#dataTest_edit_form_id').ajaxForm(options);--%>
+  function hideSubType(){
+    var current = $('#series').val();
+    $("."+current).addClass("none");
+  }
+
+  function showSubType(){
+    var current = $('#series').val();
+   $("."+current).removeClass("none");
+  }
+
   $(document).ready(function() {
     $('#single_cal1').daterangepicker({
       singleDatePicker: true,
@@ -216,5 +226,8 @@
     }, function (start, end, label) {
       console.log(start.toISOString(), end.toISOString(), label);
     });
+
+
+
   });
 </script>

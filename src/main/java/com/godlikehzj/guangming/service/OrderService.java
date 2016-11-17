@@ -36,6 +36,10 @@ public class OrderService {
         return productionMapper.getSeries();
     }
 
+    public List<Production> getAllProduction(){
+        return productionMapper.getProductions();
+    }
+
     public List<Manager> getAllManager(){
         return managerMapper.getAllManager();
     }

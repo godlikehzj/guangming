@@ -10,7 +10,7 @@
         ]]>
     </select>
     
-    <insert id="addOrder"  useGeneratedKeys="true" keyProperty="id">
+    <insert id="addOrder">
         <![CDATA[
         INSERT INTO orders(cid,mid,pid,num,startTime,endTime) VALUES (
         #{cid}, #{mid}, #{pid}, #{num}, #{startTime}, #{endTime})

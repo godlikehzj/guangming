@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.godlikehzj.guangming.bean.Customer;
 import com.godlikehzj.guangming.bean.Manager;
 import com.godlikehzj.guangming.bean.Order;
+import com.godlikehzj.guangming.bean.Production;
 import com.godlikehzj.guangming.service.OrderService;
 import com.godlikehzj.guangming.service.mapper.OrdersMapper;
 import com.godlikehzj.guangming.utils.WEBUtil;
@@ -38,8 +39,11 @@ public class OrderController extends BaseController{
     public String toEdit(ModelMap modelMap){
         List<Manager> managers = orderService.getAllManager();
         List<String> series = orderService.getAllSeries();
+        List<Production> productions = orderService.getAllProduction();
+
         modelMap.addAttribute("managers", managers);
         modelMap.addAttribute("seriesList", series);
+        modelMap.addAttribute("productions", productions);
 
         return "edit.jsp";
     }
